@@ -1,0 +1,185 @@
+﻿@page "/"
+@using EmployeeManagementPortal.Enums
+
+<PageTitle>Index</PageTitle>
+
+<h1>@topic</h1>
+<h2>One-way Databinding</h2>
+
+session: @session <br />
+isLive: @isLive <br />
+
+date and time the code has been served: @DateTime.Now
+
+<ol>
+    @foreach(var mentor in mentors)
+    {
+        <li>@mentor</li>
+    }
+</ol>
+
+<table style="@tableStyle">
+    <tr>
+        <th style="@tableHeadStyle"></th>
+        <th style="@tableHeadStyle">Name</th>
+    </tr>
+        @for(int i =0; i < mentors.Length; i++)
+        {
+    <tr>
+
+            <td>@(i+1)</td>
+            <td>@mentors[i]</td>
+    </tr>
+
+        }
+</table>
+
+<input type="checkbox" @bind="IsStyled"> Change Page Stlye?
+<div class="data-binding @(IsStyled ? "styled" : "")">
+    This text is @(!@IsStyled ? "not" : "") styled.
+</div>
+
+
+<h2>Two-way data binding using Bind Attribute</h2>
+
+<p>
+    <label>First Name:</label>
+    <input @bind="firstname" />
+</p>
+<p>
+    <label>Last Name:</label>
+    <input @bind="LastName" />
+</p>
+<p>
+    Using <code>firstname</code> as field and <code>LastName</code> as property. <br />
+    Hello @LastName, @firstname nice to meet you!
+</p>
+
+<p>
+    <label>Description:</label>
+    <input @bind="Description" @bind:event="oninput" />
+</p>
+<p>
+    Input field update as user types: @Description
+</p>
+
+<p>
+    <label>
+        Select one or more Community Area: 
+        <select @onchange="SelectedCommunityAreaChanged" multiple>
+            <option value="BigDataAndAnalatycs">Big Data & Analytics</option>
+            <option value="CloudAndDevOps">Cloud & DevOps</option>
+            <option value="EnterpriseNet">Enterprise .Net</option>
+            <option value="EnterpriseCoffee">Enterprise Coffee</option>
+            <option value="ExperienceDesign">Experience Design</option>
+            <option value="Mobile">Mobile</option>
+            <option value="ProductDelivery">Product Delivery</option>
+            <option value="ProductStrategy">Product Strategy</option>
+            <option value="QualityEngineering">Quality Engineering</option>
+            <option value="Web">Saab</option>
+        </select>
+    </label>
+</p>
+
+<p>
+    Selected Community Area: @string.Join(", ", SelectedCommunityAreas)
+</p>
+
+<p>
+    List of Selected Community Area:
+
+    <ul>
+        @foreach (var selectedCommunityArea in SelectedCommunityAreas)
+        {
+            <li>@selectedCommunityArea</li>
+        }
+    </ul>
+</p>
+
+
+<p>
+    <label>
+        Gender: 
+        <select @bind="SelectedGender">
+            @foreach (var gender in Enum.GetValues(typeof(Gender)))
+            {
+                <option value="@gender">@gender</option>
+            }
+        </select>
+    </label>
+</p>
+
+<p>
+    Selected Gender: @SelectedGender
+</p>
+
+
+<p>
+    <label>
+        <input @bind="sampleDate" @bind:format="MM/dd/yyyy" />
+    </label>
+</p>
+
+<p>
+    sample date: @sampleDate
+</p>
+
+<h2>Event Binding</h2>
+
+<div @onclick="HandleEventClick" @onmouseover="HandleEventMouseover">
+    Event Binding Demo
+</div>
+@if(@isDivMessageVisible)
+{
+    <div>@divMessage</div>    
+}
+Sample<input @onkeyup="HandleEventKeyup"/>
+@keyupDemo
+
+@code {
+    private string topic = "Data Binding";
+    private int session = 2;
+    private bool isLive = true;
+
+    private string[] mentors = new string[3] { "Von Uson", "Norben Oriarte", "Reyn Adonay" };
+    private string tableStyle = "width:50%";
+    private string tableHeadStyle = "background-color:green;color:white;";
+
+    public bool IsStyled { get; set; }
+
+    private string? firstname;
+
+    private string? LastName { get; set; }
+    public string? Description { get; set; }
+
+    public string[] SelectedCommunityAreas { get; set; } = new string[] { };
+
+    public Gender SelectedGender { get; set; }
+
+    private DateTime sampleDate = DateTime.Now;
+
+    void SelectedCommunityAreaChanged(ChangeEventArgs e)
+    {
+        SelectedCommunityAreas = (string[])e.Value;
+    }
+
+    bool isDivMessageVisible = false;
+    string divMessage = "Exploring events";
+
+    public void HandleEventClick()
+    {
+        isDivMessageVisible = !isDivMessageVisible;
+    }
+
+    public void HandleEventMouseover(MouseEventArgs e)
+    {
+        divMessage = $"Entered the div at X: {e.ClientX} Y: {e.ClientY}";
+    }
+
+    string? keyupDemo;
+
+    public void HandleEventKeyup(KeyboardEventArgs e)
+    {
+        keyupDemo = e.Key;
+    }
+}
