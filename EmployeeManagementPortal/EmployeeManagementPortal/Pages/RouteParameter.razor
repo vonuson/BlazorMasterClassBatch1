@@ -1,0 +1,71 @@
+﻿@page "/routeparameter/{parameter3?}"
+@page "/routeparameter/{parameter1:int}"
+@page "/routeparameter/{parameter1:int}/{parameter2:bool}"
+
+
+<h3>Route Parameter</h3>
+
+<div class="card">
+    <div class="card-body">
+        <p>Parameter 1: @Parameter1</p>
+        <p>Parameter 2: @Parameter2</p>
+        <p>Parameter 3: @Parameter3</p>
+    </div>
+</div>
+
+<div class="card mt-2">
+    <div class="card-body">
+        <ul>
+            <li><a href="routeparameter/1">routeparameter/1</a></li>
+            <li><a href="routeparameter/sample">routeparameter/sample</a></li>
+            <li><a href="routeparameter/2/false">routeparameter/2/false</a></li>
+            <li><a href="routeparameter/2/sample">routeparameter/2/sample</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mt-2">
+    <div class="card-body">
+        <ul>
+            <li><a href="routeparameter">Navigate to /routeparameter</a></li>
+            <li><a href="routeparameter/new-value">Navigate to /routeparameter/new-value</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mt-2">
+    <div class="card-body">
+        <ul>
+            <li><a href="routeparameter?initialCount=10">Navigate to /routeparameter?initialCount=10</a></li>
+            <li><a href="routeparameter?initialCount=20">Navigate to /routeparameter?initialCount=20</a></li>
+        </ul>
+    </div>
+</div>
+
+<p role="status">Current count: @CurrentCount</p>
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    [Parameter]
+    public int Parameter1 { get; set; }
+
+    [Parameter]
+    public bool Parameter2 { get; set; }
+
+    [Parameter]
+    public string Parameter3 { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Parameter3 = Parameter3 ?? "default-value";
+    }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "initialCount")]
+    public int CurrentCount { get; set; } = 0;
+
+    private void IncrementCount()
+    {
+        CurrentCount++;
+    }
+}
