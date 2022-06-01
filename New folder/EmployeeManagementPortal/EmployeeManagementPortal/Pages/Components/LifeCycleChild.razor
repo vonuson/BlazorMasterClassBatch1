@@ -1,0 +1,66 @@
+﻿<div class="card mb-2">
+    <div class="card-body">
+        <h4>Child</h4>
+        <p>Param: @Param</p>
+        <p>@message</p>
+    </div>
+</div>
+
+@foreach (var (method, index) in LifeCycleMethods.Select((item, index) => (item, index)))
+{
+    <div class="card mb-2">
+        <div class="card-body">
+            <p>@index - @method</p>
+        </div>
+    </div>
+}
+
+@code {
+
+    [Parameter]
+    public string? Param { get; set; }
+
+    private string message = "Not set";
+
+    List<string> LifeCycleMethods = new();
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        parameters.TryGetValue<string>(nameof(Param), out var value);
+
+        if (value is null)
+        {
+            message = "The value of 'Param' is null.";
+        }
+        else
+        {
+            message = $"The value of 'Param' is {value}.";
+        }
+
+        LifeCycleMethods.Add("Child - SetParametersAsync is called");
+
+        await base.SetParametersAsync(parameters);
+
+        Param = value ?? "Default Value";
+    }
+
+    protected override void OnInitialized()
+    {
+        LifeCycleMethods.Add("Child - OnInitialized is called");
+    }
+
+    protected override void OnParametersSet()
+    {
+        LifeCycleMethods.Add("Child - OnParametersSet is called");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        LifeCycleMethods.Add($"Child - OnAfterRender is called. firstRender = {firstRender}");
+    }
+
+    protected override bool ShouldRender()
+    {
+        return true;
+    }
+}

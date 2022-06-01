@@ -1,0 +1,20 @@
+﻿@page "/multilevelparameter"
+
+<div class="card mb-2">
+    <div class="card-body">
+        <h3>Parent</h3>
+        <CascadingValue Value="@messageForGrandChild" Name="p1">
+            <CascadingValue Value="@number" Name="p2">
+                <MultiLevelChild>
+                </MultiLevelChild>
+            </CascadingValue>
+        </CascadingValue>
+    </div>
+</div>
+
+@code {
+    private string messageForGrandChild = "This is a message from Parent";
+
+    private string number = "7";
+
+}
