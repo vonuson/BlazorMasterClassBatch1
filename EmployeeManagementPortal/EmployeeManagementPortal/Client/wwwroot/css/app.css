@@ -69,3 +69,12 @@ div.data-binding.styled {
     color: white;
     font-weight: bold;
 }
+
+.user-input {
+    width: 100%;
+    display: block;
+}
+
+label {
+    margin-top: 1.1rem;
+}

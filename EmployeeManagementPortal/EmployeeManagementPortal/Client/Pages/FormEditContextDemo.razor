@@ -1,0 +1,17 @@
+﻿@page "/form-editcontext-demo"
+<h3>FormEditContextDemo</h3>
+
+<EditForm EditContext="@editContext" OnSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <label for="@EmergencyContact.Name">Name</label>
+    <InputText @bind-Value="EmergencyContact.Name" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @EmergencyContact.Name)" />
+
+    <button @onclick="ClearForm">Clear</button>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>
+    @demo
+</p>

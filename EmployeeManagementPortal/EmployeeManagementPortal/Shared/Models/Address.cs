@@ -1,16 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
 namespace EmployeeManagementPortal.Shared.Models
 {
-	public class Address
-	{
-		public string? HouseNumber { get; set; }
-		public string? Street { get; set; }
+    public class Address
+    {
+        public string? HouseNumber { get; set; }
+        public string? Street { get; set; }
+        public string City { get; set; } = string.Empty;
+        public string Country { get; set; } = string.Empty;
+    }
 
-		[Required]
-		public string City { get; set; }
-
-		[Required]
-		public string Country { get; set; }
-	}
+    public class AddressValidator : AbstractValidator<Address>
+    {
+        public AddressValidator()
+        {
+            RuleFor(a => a.City).NotEmpty();
+            RuleFor(a => a.Country).NotEmpty();
+        }
+    }
 }

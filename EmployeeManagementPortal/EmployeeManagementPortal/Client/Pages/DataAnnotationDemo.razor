@@ -1,0 +1,80 @@
+﻿@page "/data-annotation-demo"
+@using EmployeeManagementPortal.Shared.Enums
+
+<h3>Data Annotation Demo</h3>
+
+<EditForm Model="@Demo" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label for="@Demo.Name">Name:</label> <br />
+    <InputText @bind-Value="Demo.Name"></InputText> <br />
+    <ValidationMessage For="@(() => @Demo.Name)" />
+
+    <label for="@Demo.Description">Description:</label> <br />
+    <InputTextArea @bind-Value="Demo.Description"></InputTextArea> <br />
+    <ValidationMessage For="@(() => @Demo.Description)" />
+
+    <label for="@Demo.StarRating">Star Rating:</label> <br />
+    <InputNumber @bind-Value="Demo.StarRating"></InputNumber> <br />
+    <ValidationMessage For="@(() => @Demo.StarRating)" />
+
+    <label for="@Demo.Email">Email:</label> <br />
+    <InputText @bind-Value="Demo.Email"></InputText><br />
+    <ValidationMessage For="@(() => @Demo.Email)" />
+
+    <label for="@Demo.Phone">Phone:</label> <br />
+    <InputText @bind-Value="Demo.Phone"></InputText> <br />
+    <ValidationMessage For="@(() => @Demo.Phone)" />
+
+    <label for="@Demo.Website">Website:</label> <br />
+    <InputText @bind-Value="Demo.Website"></InputText> <br />
+    <ValidationMessage For="@(() => @Demo.Website)" />
+
+    <label for="@Demo.Password">Password:</label> <br />
+    <InputText @bind-Value="Demo.Password"></InputText> <br />
+    <ValidationMessage For="@(() => @Demo.Password)" />
+
+    <label for="@Demo.ConfirmPassword">Confirm Password:</label> <br />
+    <InputText @bind-Value="Demo.ConfirmPassword"></InputText> <br />
+    <ValidationMessage For="@(() => @Demo.ConfirmPassword)" />
+
+    @*Additional*@
+    <label for="@Demo.Gender">Gender:</label> <br />
+    <InputSelect @bind-Value="@Demo.Gender">
+        <option value=null>--</option>
+        @foreach (var gender in Enum.GetValues(typeof(Gender)))
+        {
+            <option value="@gender">@gender</option>
+        }
+    </InputSelect>
+
+    <label for="@Demo.DemoDate">Demo Date:</label> <br />
+    <InputDate @bind-Value="Demo.DemoDate"></InputDate> <br />
+
+    <label for="@Demo.IsLive">Is Live?:</label>
+    <InputCheckbox @bind-Value="Demo.IsLive"></InputCheckbox> <br />
+
+    <label for="@Demo.MaritalStatus">Marital Status:</label> <br />
+    <InputRadioGroup @bind-Value="@Demo.MaritalStatus" Name="maritalStatus">
+        @foreach (var status in Enum.GetValues(typeof(MaritalStatus)))
+        {
+            <InputRadio Name="maritalStatus" Value="@status" /> @status
+        }
+    </InputRadioGroup><br />
+
+    <label>Photo:</label> <br />
+    <InputFile OnChange="@HandleUploadPhoto"></InputFile> <br />
+
+    @*Additional 2*@
+    <label for="@Demo.Birthday">Birthday:</label> <br />
+    <InputDate @bind-Value="Demo.Birthday"></InputDate> <br />
+    <ValidationMessage For="@(() => @Demo.Birthday)" />
+
+    <button @onclick="ClearForm">Clear</button>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>
+    @demo
+</p>

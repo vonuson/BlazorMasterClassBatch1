@@ -1,44 +1,41 @@
 ﻿using EmployeeManagementPortal.Shared.Enums;
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
 namespace EmployeeManagementPortal.Shared.Models
 {
-	public class Employee
+    public class Employee
 	{
 		public int EmployeeId { get; set; }
 
-		public bool IsActive { get; set; }
-
-		[Required]
-		public string FirstName { get; set; }
+		public string FirstName { get; set; } = string.Empty;
 
 		public string? MiddleName { get; set; }
 
-		[Required]
-		public string LastName { get; set; }
+		public string LastName { get; set; } = string.Empty;
 
-		[Required]
 		public Gender Gender { get; set; }
 
-		[Required]
-		public DateTime DateOfBirth { get; set; }
+		public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
-		[Required]
-		public string BirthCountry { get; set; }
+		public string MobileNumber { get; set; } = string.Empty;
 
-		public string? BirthState { get; set; }
+		public string EmailAddress { get; set; } = string.Empty;
 
-		[Required]
-		public string ContactNumber { get; set; }
-
-		public EmergencyContact? EmergencyContact { get; set; }
-
-		[Required]
-		public string EmailAddress { get; set; }
+		public string? Description { get; set; }
 
 		public MaritalStatus MaritalStatus { get; set; }
 
-		public Address Address { get; set; }
-		public string? Description { get; set; }
+		public EmergencyContact EmergencyContact { get; set; } = new EmergencyContact();
+
+		public Address Address { get; set; } = new Address();
 	}
+
+	public class EmployeeValidator : AbstractValidator<Employee>
+    {
+		public EmployeeValidator()
+        {
+			RuleFor(e => e.FirstName).NotEmpty().WithMessage("Enter a firstname");
+			RuleFor(e => e.Address).SetValidator(new AddressValidator());
+        }
+    }
 }

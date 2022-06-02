@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementPortal.Server", "EmployeeManagementPortal\Server\EmployeeManagementPortal.Server.csproj", "{2E23F793-1856-4B84-A47D-559126BDB9BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementPortal.Server", "EmployeeManagementPortal\Server\EmployeeManagementPortal.Server.csproj", "{2E23F793-1856-4B84-A47D-559126BDB9BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementPortal.Client", "EmployeeManagementPortal\Client\EmployeeManagementPortal.Client.csproj", "{661EDE9B-27F6-402F-BD6D-46974DE04E62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementPortal.Client", "EmployeeManagementPortal\Client\EmployeeManagementPortal.Client.csproj", "{661EDE9B-27F6-402F-BD6D-46974DE04E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementPortal.Shared", "EmployeeManagementPortal\Shared\EmployeeManagementPortal.Shared.csproj", "{260D504A-776C-4A6E-892B-F004875CF5AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementPortal.Shared", "EmployeeManagementPortal\Shared\EmployeeManagementPortal.Shared.csproj", "{260D504A-776C-4A6E-892B-F004875CF5AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

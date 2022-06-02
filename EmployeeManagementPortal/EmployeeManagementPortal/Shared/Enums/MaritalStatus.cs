@@ -4,6 +4,9 @@ namespace EmployeeManagementPortal.Shared.Enums
 {
 	public enum MaritalStatus
 	{
+		[Description("Single")]
+		Single,
+
 		[Description("Anulled")]
 		Annulled,
 
@@ -24,9 +27,6 @@ namespace EmployeeManagementPortal.Shared.Enums
 
 		[Description("Separated")]
 		Separated,
-
-		[Description("Single")]
-		Single,
 
 		[Description("Surviving Civil Partner")]
 		SurvivingCivilPartner,
