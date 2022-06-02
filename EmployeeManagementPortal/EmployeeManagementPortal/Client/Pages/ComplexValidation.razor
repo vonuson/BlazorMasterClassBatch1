@@ -1,0 +1,81 @@
+﻿@page "/complex-validation-demo"
+@using EmployeeManagementPortal.Shared.Enums
+
+<h3>Data Annotation Demo</h3>
+
+<EditForm Model="@ComplexDemoModel" OnValidSubmit="@HandleValidSubmit">
+    <ObjectGraphDataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label for="@ComplexDemoModel.RegularProperty">RegularProperty:</label>
+    <InputText @bind-Value="ComplexDemoModel.RegularProperty" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @ComplexDemoModel.RegularProperty)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Name">Name:</label>
+    <InputText @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Name" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Name)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Description">Description:</label>
+    <InputTextArea @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Description" class="user-input"></InputTextArea> 
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Description)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.StarRating">Star Rating:</label>
+    <InputNumber @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.StarRating" class="user-input"></InputNumber>
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.StarRating)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Email">Email:</label>
+    <InputText @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Email" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Email)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Phone">Phone:</label>
+    <InputText @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Phone" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Phone)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Website">Website:</label>
+    <InputText @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Website" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Website)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Password">Password:</label>
+    <InputText @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Password" class="user-input"></InputText> 
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Password)" />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.ConfirmPassword">Confirm Password:</label> 
+    <InputText @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.ConfirmPassword" class="user-input"></InputText> 
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.ConfirmPassword)" />
+
+    @*Additional*@
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Gender">Gender:</label> <br />
+    <InputSelect @bind-Value="@ComplexDemoModel.DataAnnotationDemoModel.Gender">
+        <option value=null>--</option>
+        @foreach (var gender in Enum.GetValues(typeof(Gender)))
+        {
+            <option value="@gender">@gender</option>
+        }
+    </InputSelect>
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.DemoDate">Demo Date:</label> <br />
+    <InputDate @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.DemoDate"></InputDate> <br />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.IsLive">Is Live?:</label>
+    <InputCheckbox @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.IsLive"></InputCheckbox> <br />
+
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.MaritalStatus">Marital Status:</label> <br />
+    <InputRadioGroup @bind-Value="@ComplexDemoModel.DataAnnotationDemoModel.MaritalStatus" Name="maritalStatus">
+        @foreach (var status in Enum.GetValues(typeof(MaritalStatus)))
+        {
+            <InputRadio Name="maritalStatus" Value="@status" /> @status
+        }
+    </InputRadioGroup><br />
+
+    @*Additional 2*@
+    <label for="@ComplexDemoModel.DataAnnotationDemoModel.Birthday">Birthday:</label> <br />
+    <InputDate @bind-Value="ComplexDemoModel.DataAnnotationDemoModel.Birthday"></InputDate> <br />
+    <ValidationMessage For="@(() => @ComplexDemoModel.DataAnnotationDemoModel.Birthday)" />
+
+    <button @onclick="ClearForm">Clear</button>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>
+    @demo
+</p>

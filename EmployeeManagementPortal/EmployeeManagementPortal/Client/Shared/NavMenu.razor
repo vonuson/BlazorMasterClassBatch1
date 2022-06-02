@@ -1,0 +1,104 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Blazor Demo</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="databinding">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Data Binding
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="eventcallback">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Event Callback
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="lifecyle">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Component Life Cycle
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="routeparameter">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Route Parameters
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="navigation">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Navigation
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="multilevelparameter">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Multi Level Parameter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="form-model-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Form Demo
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="form-editcontext-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Form Demo 2
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="data-annotation-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Data Annotation
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="complex-validation-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Complex Validation
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fluent-validation-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fluent Validation
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="form-native-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Form Native
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="form-editcontext-advance-demo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> EditContext Advance
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
