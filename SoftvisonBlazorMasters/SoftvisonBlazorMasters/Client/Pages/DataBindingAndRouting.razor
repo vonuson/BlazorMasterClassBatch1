@@ -1,0 +1,61 @@
+﻿@page "/data-binding-and-routing"
+@using System.Timers
+
+<div class="container @(IsDark ? "dark" : "light")">
+    <h3>Data Binding and Routing</h3>
+
+    <input type="checkbox" @bind="IsDark"> Mode: @(IsDark ? "Dark Mode" : "Light Mode")
+    <p>
+        <label>Count Down From:</label>
+        <input @bind="CountFrom" />
+    </p>
+    <p>
+        <label>Count Down Until:</label>
+        <input @bind="CountUntil" />
+    </p>
+
+    @if(CountFrom > 0)
+    {
+        @*bonus*@
+        <div>
+            <p>@counter</p>
+            <button @onclick="HandleStartTimer">Start</button>
+        </div>
+    }
+
+    <div>
+        Count Down From: @CountFrom <br />
+        Count Down Until: @CountUntil
+    </div>
+
+</div>
+
+@code {
+    private static Timer _timer;
+    private int counter = 0;
+
+    public int CountFrom { get; set; } = 0;
+    public int CountUntil { get; set; } = 0;
+    public bool IsDark { get; set; } = false;
+
+    public void HandleStartTimer()
+    {
+        counter = CountFrom;
+        _timer = new Timer(1000);
+        _timer.Elapsed += CountDownTimer;
+        _timer.Enabled = true;   
+    }
+
+    public void CountDownTimer(Object source, ElapsedEventArgs e)
+    {
+        if (counter > CountUntil)
+        {
+            counter -= 1;
+        }
+        else
+        {
+            _timer.Enabled = false;
+        }
+        InvokeAsync(StateHasChanged);
+    }
+}

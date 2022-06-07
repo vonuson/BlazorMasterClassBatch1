@@ -1,0 +1,28 @@
+﻿@page "/component-communication"
+<h3>Employee List</h3>
+
+<p>
+    Selection Count: @SelectionCount
+</p>
+
+<div>
+    @foreach (var name in Empoyees)
+    {
+        <EmployeeCard Name="@name" OnSelectionChanged="SelectionChanged"></EmployeeCard>
+    }
+</div>
+
+@code {
+
+    public int SelectionCount { get; set; }
+
+    public List<String> Empoyees { get; set; } = new() { "Norben", "Von", "Reyn", "John", "Doe" };
+
+    private void SelectionChanged(bool selected)
+    {
+        if (selected)
+            SelectionCount++;
+        else
+            SelectionCount--;
+    }
+}
