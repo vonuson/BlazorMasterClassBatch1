@@ -10,7 +10,8 @@ namespace EmployeeManagementPortal.Shared.Validations
             ValidateStudentIsNotNull(student);
 
             Validate(
-                (Rule: IsInvalid(student.Name), Parameter: nameof(Student.Name)));
+                (Rule: IsInvalid(student.FirstName), Parameter: nameof(Student.FirstName)),
+                (Rule: IsInvalid(student.LastName), Parameter: nameof(Student.LastName)));
         }
 
         private static void ValidateStudentIsNotNull(Student student)
