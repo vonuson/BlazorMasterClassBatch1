@@ -1,0 +1,9 @@
+﻿@if (Errors is not null)
+{
+    <ul>
+        @foreach (string error in Errors)
+        {
+            <li>@error</li>
+        }
+    </ul>
+}

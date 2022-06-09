@@ -1,6 +1,27 @@
-﻿<ContainerComponent State=State>
+﻿@using EmployeeManagementPortal.Shared.Models
+<ContainerComponent State=State>
     <Content>
-        <TextBoxBase @ref=TextBox Placeholder="Please enter a name." />
-        <ButtonBase Label="Register" OnClick=ButtonClicked />
+        <LabelBase Value="First Name:" />
+        <TextBoxBase Placeholder="Please enter your first name"
+                     @bind-Value=Student.FirstName />
+        <ValidationSummaryBase Key="FirstName" ValidationData=ValidationData />
+        <LineBreak />
+        <LabelBase Value="Last Name:" />
+        <TextBoxBase Placeholder="Please enter your last name"
+                     @bind-Value=Student.LastName />
+        <ValidationSummaryBase Key="LastName" ValidationData=ValidationData />
+        <LineBreak />
+        <LabelBase Value="Gender:" />
+        <DropDownBase @ref=StudentGenderDropDown TEnum=StudentGender
+                      @bind-Value=Student.Gender></DropDownBase>
+        <LineBreak />
+        <LabelBase Value="Birthdate:" />
+        <DatePickerBase @ref=DateOfBirthPicker @bind-Value=Student.DateOfBirth></DatePickerBase>
+        <LineBreak />
+        <ButtonBase Label="Submit"
+                    OnClick=RegisterStudent
+                    @ref=RegisterStudentButton />
+        <LineBreak />
+        <LabelBase @ref=ErrorLabel></LabelBase>
     </Content>
 </ContainerComponent>
