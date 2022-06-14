@@ -1,0 +1,21 @@
+﻿@inject StudentService StudentService;
+@implements IDisposable
+
+<StudentTable Students="StudentService.Students"></StudentTable>
+
+@if (StudentService.Students.Any())
+{
+    <button class="btn btn-danger mt-2" @onclick="async () => await StudentService.ClearStudents()">Clear</button>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        StudentService.OnChange += StateHasChanged;
+    }
+
+    void IDisposable.Dispose()
+    {
+        StudentService.OnChange -= StateHasChanged;
+    }
+}

@@ -1,0 +1,35 @@
+﻿@using EmployeeManagementPortal.Shared.Models
+
+<div class="card mb-2">
+    <div class="card-header">
+        Student
+    </div>
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">First Name</span>
+            </div>
+            <input type="text" class="form-control" id="firstName" @bind="student.FirstName" />
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Last Name</span>
+            </div>
+            <input type="text" class="form-control" id="firstName" @bind="student.LastName" />
+        </div>
+        <button class="btn btn-success" @onclick="SubmitClicked">Submit</button>
+    </div>
+</div>
+
+@code {
+    private Student student = new();
+
+    [Parameter]
+    public EventCallback<Student> OnSubmitStudent { get; set; }
+
+    private async Task SubmitClicked()
+    {
+        await OnSubmitStudent.InvokeAsync(student);
+        student = new();
+    }
+}
