@@ -1,0 +1,12 @@
+﻿@page "/url-state-demo/{Id}/{Secret?}";
+
+<h3>UrlStateManagementDemo</h3>
+
+Id: @Id <br />
+
+@if(!String.IsNullOrEmpty(Secret))
+{
+    @Secret <br />
+}
+
+Page: @Page
