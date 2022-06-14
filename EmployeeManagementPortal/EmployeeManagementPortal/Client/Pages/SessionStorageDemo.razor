@@ -1,0 +1,27 @@
+﻿@page "/session-storage-demo";
+
+<h3>SessionStorageDemo</h3>
+
+<label>Name</label>
+<input @bind="Name" />
+<button @onclick="SaveName">Save Name to Session Storage</button> <br />
+
+<label>Search</label>
+<input @bind="search" />
+<button @onclick="SaveSearch">Save Search to Session Storage</button> <br />
+
+<button @onclick="ClearSearches">Clear Recent Searches from Session Storage</button> <br />
+<button @onclick="ClearSessionStorage">Clear Session Storage</button> <br />
+<button @onclick="DemoOtherProperties">Demo Other Properties of Session Storage</button>
+
+@Name<br/>
+
+Recent Searches:<br/>
+@foreach(var recentSearch in RecentSearches)
+{
+    @recentSearch<br/>
+}
+
+session storage length: @sessionStorageLength <br />
+session storage key1: @sessionStorageKey0 <br />
+session storage has name: @sessionStorageHasName 
