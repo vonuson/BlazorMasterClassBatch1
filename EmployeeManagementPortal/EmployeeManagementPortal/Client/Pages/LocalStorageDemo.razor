@@ -1,0 +1,27 @@
+﻿@page "/local-storage-demo";
+
+<h3>LocalStorageDemo</h3>
+
+<label>Name</label>
+<input @bind="Name" />
+<button @onclick="SaveName">Save Name to Local Storage</button> <br />
+
+<label>Search</label>
+<input @bind="search" />
+<button @onclick="SaveSearch">Save Search to Local Storage</button> <br />
+
+<button @onclick="ClearSearches">Clear Recent Searches from Local Storage</button> <br />
+<button @onclick="ClearLocalStorage">Clear Local Storage</button> <br />
+<button @onclick="DemoOtherProperties">Demo Other Properties of Local Storage</button>
+
+@Name<br/>
+
+Recent Searches:<br/>
+@foreach(var recentSearch in RecentSearches)
+{
+    @recentSearch<br/>
+}
+
+local storage length: @localStorageLength <br />
+local storage key1: @localStorageKey0 <br />
+local storage has name: @localStorageHasName 
