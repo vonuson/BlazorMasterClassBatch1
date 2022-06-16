@@ -1,0 +1,27 @@
+﻿@page "/node-api-demo"
+@inject IHttpClientFactory ClientFactory
+
+<h3>NamedOptionDemo</h3>
+
+<PageTitle>Todo</PageTitle>
+
+@if (nodeDemos == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @foreach (var demo in nodeDemos)
+    {
+        <div class="card mb-2">
+            <div class="card-body">
+                <div>Id: @demo.Id</div>
+                <div>User Name: @demo.UserName</div>
+                <div>Email Address: @demo.EmailAddress</div>
+                <div>First Name: @demo.FirstName</div>
+                <div>Last Name: @demo.LastName</div>
+            </div>
+        </div>
+    }
+}
+

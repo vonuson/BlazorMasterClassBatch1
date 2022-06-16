@@ -1,0 +1,18 @@
+﻿@page "/form-model-demo"
+
+<h3>FormModelDemo</h3>
+
+<EditForm Model="@EmergencyContact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+    <DataAnnotationsValidator />
+
+    <label for="@EmergencyContact.Name">Name</label>
+    <InputText @bind-Value="EmergencyContact.Name" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @EmergencyContact.Name)" />
+
+    <button @onclick="ClearForm">Clear</button>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>
+    @demo
+</p>

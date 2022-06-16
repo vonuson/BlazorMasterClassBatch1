@@ -1,0 +1,23 @@
+﻿@page "/form-editcontext-advance-demo"
+
+<h3>FormEditContextDemo</h3>
+
+<EditForm EditContext="@editContext" OnSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <label for="@EmergencyContact.Name">Name</label>
+    <InputText @bind-Value="EmergencyContact.Name" @onblur="@(() => HandleOnBlur("Name"))" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @EmergencyContact.Name)" />
+
+    <label for="@EmergencyContact.MobileNumber">Mobile Number</label>
+    <InputText @bind-Value="EmergencyContact.MobileNumber" @onblur="@(() => HandleOnBlur("MobileNumber"))" class="user-input"></InputText>
+    <ValidationMessage For="@(() => @EmergencyContact.MobileNumber)" />
+
+    <a href="javscript:void(0)" @onclick="@ValidateAll">Validate All</a>
+    <button @onclick="ClearForm">Clear</button>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>
+    @demo
+</p>

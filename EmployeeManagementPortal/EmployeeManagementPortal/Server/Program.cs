@@ -1,4 +1,6 @@
+using EmployeeManagementPortal.Server;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddMemoryCache();
+builder.Services.AddDbContext<SampleContext>(opt =>
+    opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddSwaggerGen(c =>
+{
+c.SwaggerDoc("v1", new() { Title = "DemoApi", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -14,6 +22,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DemoApi v1"));
 }
 else
 {

@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "c6a28ac9-1e42-404b-89ab-2324fd6bd141",
+      "userName": "vonrhitzadrian.uson",
+      "emailAddress": "vonrhitzadrian.uson@softvision.com",
+      "firstName": "Von Rhitz Adrian",
+      "lastName": "Uson"
+    },
+    {
+      "id": "f476f2ed-10fa-411a-9bae-df91ca667561",
+      "userName": "reynner.adonay",
+      "emailAddress": "reynner.adonay@softvision.com",
+      "firstName": "Reyn",
+      "lastName": "Adonay"
+    },
+    {
+      "id": "f202cd17-fa35-4319-b1f7-9659f8b56815",
+      "userName": "norben.oriarte",
+      "emailAddress": "norben.oriarte@softvision.com",
+      "firstName": "Norben",
+      "lastName": "Oriarte"
+    }
+  ]
+}

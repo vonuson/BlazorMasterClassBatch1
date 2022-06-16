@@ -1,0 +1,16 @@
+﻿@inject StudentService StudentService
+@implements IDisposable
+
+<StudentForm OnSubmitStudent="async (s)=> await StudentService.AddStudent(s)"></StudentForm>
+
+@code {
+    protected override void OnInitialized()
+    {
+        StudentService.OnChange += StateHasChanged;
+    }
+
+    void IDisposable.Dispose()
+    {
+        StudentService.OnChange -= StateHasChanged;
+    }
+}
