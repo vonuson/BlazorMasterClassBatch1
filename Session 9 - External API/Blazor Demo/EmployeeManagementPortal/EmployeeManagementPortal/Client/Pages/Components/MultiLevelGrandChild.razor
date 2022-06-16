@@ -1,0 +1,16 @@
+﻿<div class="card mb-2 bg-secondary">
+    <div class="card-body text-light">
+        <h3>Grand Child Component</h3>
+        <p>Message: @MessageForGrandChild</p>
+        <p>Number: @Number</p>
+    </div>
+</div>
+
+@code {
+    
+    [CascadingParameter(Name = "p1")]
+    public string MessageForGrandChild { get; set; }
+
+    [CascadingParameter(Name = "p2")]
+    public string Number { get; set; }
+}

@@ -1,6 +1,6 @@
 ﻿@page "/fetchdata"
 @using EmployeeManagementPortal.Shared
-@inject HttpClient Http
+@inject IHttpClientFactory ClientFactory
 
 <PageTitle>Weather forecast</PageTitle>
 
@@ -48,6 +48,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        var client = ClientFactory.CreateClient("WeatherForecast");
+        forecasts = await client.GetFromJsonAsync<WeatherForecast[]>("api/WeatherForecast");
     }
 }

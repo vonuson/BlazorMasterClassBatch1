@@ -1,0 +1,48 @@
+﻿@page "/api-integration-demo"
+@using EmployeeManagementPortal.Shared.Enums
+@inject HttpClient Http
+
+<h3>ApiIntegrationDemo</h3>
+
+@if (samples == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@Sample" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <label for="@Sample.Name">Name</label>
+        <InputText @bind-Value="Sample.Name" class="user-input"></InputText>
+        <ValidationMessage For="@(() => @Sample.Name)" />
+
+        <label for="@Sample.Nationality">Nationality</label>
+        <InputText @bind-Value="Sample.Nationality" class="user-input"></InputText>
+        <ValidationMessage For="@(() => @Sample.Nationality)" />
+
+        <label for="@Sample.Gender">Gender:</label> <br />
+        <InputSelect @bind-Value="@Sample.Gender">
+            <option value=null>--</option>
+            @foreach (var gender in Enum.GetValues(typeof(Gender)))
+            {
+                <option value="@gender">@gender</option>
+            }
+        </InputSelect>
+
+        <button @onclick="ClearForm" class="btn btn-outline-secondary">Clear</button>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </EditForm>
+
+    @foreach (var sample in samples)
+    {
+        <div class="card mb-2">
+            <div class="card-body">
+                <input placeholder="Add a task" class="user-input" @onblur="() => EditName(sample)" @bind="sample.Name" />
+                <div>Nationality: @sample.Nationality</div>
+                <div>Gender: @Sample.Gender</div>
+                <button class="btn btn-outline-danger" @onclick="() => DeleteSample(sample)">Delete</button>
+            </div>
+        </div>
+    }
+}

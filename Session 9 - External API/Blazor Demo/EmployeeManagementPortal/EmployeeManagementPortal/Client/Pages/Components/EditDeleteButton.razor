@@ -1,0 +1,28 @@
+﻿@if (IsAdmin)
+{
+    <button class="btn btn-danger" @onclick="DeleteClicked">Delete</button>
+    <button class="btn btn-success" @onclick="EditClicked">Edit</button>
+}
+
+@code {
+
+    [Parameter]
+    public Boolean IsAdmin { get; set; }
+
+    [Parameter]
+    public EventCallback OnDeleteClicked { get; set; }
+
+    [Parameter]
+    public EventCallback OnEditClicked { get; set; }
+
+    private async Task DeleteClicked()
+    {
+        await OnDeleteClicked.InvokeAsync();
+    }
+
+    private async Task EditClicked()
+    {
+        await OnEditClicked.InvokeAsync();
+    }
+
+} 

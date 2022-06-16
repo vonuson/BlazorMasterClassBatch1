@@ -1,0 +1,14 @@
+﻿@using EmployeeManagementPortal.Shared.Models
+@inject HttpClient Http
+
+<GridBase Items=Students TItem=Student>
+    <Columns>
+        <Column Name="Image" Label="" >
+            <img src=@($"data:image/bmp;base64, {context.Image}") />
+        </Column>
+        <Column Name="FirstName" Label="First Name" />
+        <Column Name="LastName" Label="Last Name" />
+        <Column Name="Gender" Label="Gender" />
+        <Column Name="DateOfBirth" Label="Date of Birth" />
+    </Columns>
+</GridBase>

@@ -1,0 +1,21 @@
+﻿@page "/server-side-state-management"
+@inject HttpClient Http
+@using EmployeeManagementPortal.Shared.Models
+
+<h3>Server-Side State Management</h3>
+
+<StudentForm OnSubmitStudent="AddStudent"></StudentForm>
+<StudentTable Students="@students"></StudentTable>
+
+@code {
+    private List<Student> students = new();
+
+    protected override async Task OnInitializedAsync() => students = await Http.GetFromJsonAsync<List<Student>>("api/Student");
+
+    private async Task AddStudent(Student student)
+    {
+        var result = await Http.PostAsJsonAsync<Student>("api/Student", student);
+
+        students.Add(await result.Content.ReadFromJsonAsync<Student>());
+    }
+}

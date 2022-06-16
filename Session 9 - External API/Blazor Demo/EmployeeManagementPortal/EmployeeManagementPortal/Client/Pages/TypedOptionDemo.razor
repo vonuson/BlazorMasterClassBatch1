@@ -1,0 +1,25 @@
+﻿@page "/typed-option-demo"
+@using EmployeeManagementPortal.Client.HttpClients
+@inject TypedDemoHttpClient Http
+
+<h3>TypedOptionDemo</h3>
+
+<PageTitle>Todo</PageTitle>
+
+@if (samples == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @foreach (var sample in samples)
+    {
+        <div class="card mb-2">
+            <div class="card-body">
+                <div>Name: @sample.Name</div>
+                <div>Nationality: @sample.Nationality</div>
+                <div>Gender: @sample.Gender</div>
+            </div>
+        </div>
+    }
+}
