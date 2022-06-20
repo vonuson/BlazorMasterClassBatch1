@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass">
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -25,129 +25,172 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="databinding">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Data Binding
+            <NavLink class="nav-link" href="#" data-bs-target="#session2-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 2
             </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session2-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="databinding">
+                        <span class="oi oi-book" aria-hidden="true"></span> Data Binding
+                    </NavLink>
+                </li>
+            </ul>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="eventcallback">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Event Callback
+            <NavLink class="nav-link" href="#" data-bs-target="#session3-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 3
             </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session3-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="eventcallback">
+                        <span class="oi oi-book" aria-hidden="true"></span> Event Callback
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="lifecyle">
+                        <span class="oi oi-book" aria-hidden="true"></span> Component Life Cycle
+                    </NavLink>
+                </li>
+            </ul>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="lifecyle">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Component Life Cycle
+            <NavLink class="nav-link" href="#" data-bs-target="#session4-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 4
             </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session4-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="routeparameter">
+                        <span class="oi oi-book" aria-hidden="true"></span> Route Parameters
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="navigation">
+                        <span class="oi oi-book" aria-hidden="true"></span> Navigation
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="multilevelparameter">
+                        <span class="oi oi-book" aria-hidden="true"></span> Multi Level Parameter
+                    </NavLink>
+                </li>
+            </ul>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="routeparameter">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Route Parameters
+            <NavLink class="nav-link" href="#" data-bs-target="#session5-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 5
             </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session5-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="form-model-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Form Demo
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="form-editcontext-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Form Demo 2
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="data-annotation-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Data Annotation
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="complex-validation-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Complex Validation
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="fluent-validation-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Fluent Validation
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="form-native-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Form Native
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="form-editcontext-advance-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> EditContext Advance
+                    </NavLink>
+                </li>
+
+            </ul>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="navigation">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Navigation
+            <NavLink class="nav-link" href="#" data-bs-target="#session6-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 6 & 7
             </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session6-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="base-components">
+                        <span class="oi oi-book" aria-hidden="true"></span> Base Components
+                    </NavLink>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="#" data-bs-target="#session8-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 8
+            </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session8-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="url-state-demo/72533539-8b76-465f-a077-1700d063daeb">
+                        <span class="oi oi-book" aria-hidden="true"></span> Url State Demo
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="local-storage-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Local Storage
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="session-storage-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Session Storage
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="in-memory-state-management">
+                        <span class="oi oi-book" aria-hidden="true"></span> In Memory State
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="view-in-memory-state-management">
+                        <span class="oi oi-book" aria-hidden="true"></span> In Memory State View
+                    </NavLink>
+                </li>
+                <li class="nav-subitem">
+                    <NavLink href="server-side-state-management">
+                        <span class="oi oi-book" aria-hidden="true"></span> Server Side State
+                    </NavLink>
+                </li>
+            </ul>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="multilevelparameter">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Multi Level Parameter
+            <NavLink class="nav-link" href="#" data-bs-target="#session9-submenu" data-bs-toggle="collapse">
+                <span class="oi oi-menu" aria-hidden="true"></span> Session 9
             </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="form-model-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Form Demo
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="form-editcontext-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Form Demo 2
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="data-annotation-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Data Annotation
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="complex-validation-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Complex Validation
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fluent-validation-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fluent Validation
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="form-native-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Form Native
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="form-editcontext-advance-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> EditContext Advance
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="base-components">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Base Components
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="url-state-demo/72533539-8b76-465f-a077-1700d063daeb">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Url State Demo
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="local-storage-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Local Storage
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="session-storage-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Session Storage
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="in-memory-state-management">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> In Memory State
-            </NavLink>
-        </div>        
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="in-memory-state-management-view">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> In Memory State View
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="server-side-state-management">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Server Side State
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="api-integration-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> API Integration
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="basic-option-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Basic Option
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="named-option-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Named Option
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="typed-option-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Typed Option
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="node-api-demo">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Node API
-            </NavLink>
+            <ul class="nav-submenu collapse list-unstyled" id="session9-submenu">
+                <li class="nav-subitem">
+                    <NavLink href="api-integration-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> API Integration
+                    </NavLink>
+                    <NavLink href="basic-option-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Basic Option
+                    </NavLink>
+                    <NavLink href="named-option-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Named Option
+                    </NavLink>
+                    <NavLink href="typed-option-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Typed Option
+                    </NavLink>
+                    <NavLink href="node-api-demo">
+                        <span class="oi oi-book" aria-hidden="true"></span> Node API
+                    </NavLink>
+                </li>
+            </ul>
         </div>
     </nav>
 </div>
@@ -155,7 +198,7 @@
 @code {
     private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "sidebar-collapse" : null;
 
     private void ToggleNavMenu()
     {
