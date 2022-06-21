@@ -1,0 +1,77 @@
+﻿@page "/call-dotnet-from-javascript"
+@inject IJSRuntime JSRuntime
+@inject ILogger<CallDotNetFromJs> Logger
+@implements IAsyncDisposable
+
+<h3>Call DotNet from Javascript</h3>
+
+<div class="card">
+    <div class="card-header">Text History</div>
+    <div class="card-body">
+        <ul>
+            @foreach (string text in TextHistory)
+            {
+                <li>@text</li>
+            }
+        </ul>
+    </div>    
+    <div class="card-footer">
+        <button class="btn btn-primary" onclick="runStaticMethod()">Trigger Static Method</button>
+    </div>
+</div>
+
+@code {
+    List<string> TextHistory = new List<string>();
+
+    [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+    public enum TestEnum
+    {
+        FirstValue = 100,
+        SecondValue = 200
+    };
+
+    DotNetObjectReference<CallDotNetFromJs> objectReference;
+
+    int generatorHandle = -1;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            objectReference = DotNetObjectReference.Create(this);
+            generatorHandle = await JSRuntime.InvokeAsync<int>("startRandomGenerator", objectReference);
+        }
+    }
+
+    [JSInvokable("AddText")]
+    public void AddTextToTextHistory(string text)
+    {
+        TextHistory.Add(text.ToString());
+        while (TextHistory.Count > 10)
+            TextHistory.RemoveAt(0);
+        StateHasChanged();
+        Console.WriteLine("DotNet: Received " + text);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        GC.SuppressFinalize(this);
+
+        if(generatorHandle != 1)
+        {
+            await JSRuntime.InvokeVoidAsync("stopRandomGenerator", generatorHandle);
+        }
+
+        if(objectReference != null)
+        {
+            objectReference.Dispose();
+        }
+    }
+
+    [JSInvokable("OurInvokableDotNetMethod")]
+    public static async Task OurInvokableDotNetMethod(TestEnum number)
+    {
+        Console.WriteLine($"{number}: {(int)number}");
+    }
+}
