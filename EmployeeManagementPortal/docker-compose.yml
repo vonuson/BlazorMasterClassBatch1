@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  employeemanagementportal.server:
+    image: ${DOCKER_REGISTRY-}employeemanagementportalserver
+    build:
+      context: .
+      dockerfile: EmployeeManagementPortal/Server/Dockerfile
+
+  dockerblazor.server:
+    image: ${DOCKER_REGISTRY-}dockerblazorserver
+    build:
+      context: .
+      dockerfile: DockerBlazor.Server/Dockerfile
+
+  dockerblazor.wasm:
+    image: ${DOCKER_REGISTRY-}dockerblazorwasm
+    build:
+      context: .
+      dockerfile: DockerBlazor.Wasm/Dockerfile
+

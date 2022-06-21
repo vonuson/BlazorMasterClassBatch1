@@ -1,0 +1,72 @@
+﻿@page "/call-javascript"
+@using EmployeeManagementPortal.Shared.Models
+@inject ILogger<CallJavaScript> Logger
+@inject IJSRuntime JSRuntime
+
+
+<h3>Call JavaScript</h3>
+
+<p>
+    <button class="btn btn-primary" @onclick="PerformJavascriptInterop1">Perform Javascript Interop 1</button>
+    <button class="btn btn-primary" @onclick="PerformJavascriptInterop2">Perform Javascript Interop 2</button>
+</p>
+<p>
+    Result: @result
+</p>
+<p>
+    <button class="btn btn-success" @onclick="ShowConfirm">Show Confirm</button>
+    <button class="btn btn-success" @onclick="ShowPrompt">Show Prompt</button>
+</p>
+<p>
+    <button class="btn btn-primary" @onclick='async () => await ShowToastr("info")'>Toastr Info</button>
+    <button class="btn btn-success" @onclick='async () => await ShowToastr("success")'>Toastr Success</button>
+    <button class="btn btn-warning" @onclick='async () => await ShowToastr("warning")'>Toastr Warning</button>
+    <button class="btn btn-danger" @onclick='async () => await ShowToastr("error")'>Toastr Error</button>
+    <button class="btn btn-secondary" @onclick='async () => await ShowToastr("clear")'>Toastr Clear</button>
+</p>
+<p>
+    <button class="btn btn-primary" onclick="runStaticMethod()">Trigger Static Method</button>
+</p>
+
+@code {
+    private string @result;
+
+    protected override void OnInitialized()
+    {
+        Logger.Log(LogLevel.Information, "Blazor initialized: " + DateTime.Now.ToString("mm:ss.fff"));
+        base.OnInitialized();
+    }
+
+    private async Task PerformJavascriptInterop1()
+    {
+        await JSRuntime.InvokeVoidAsync("alert", "Hello World");
+    }
+
+    private async Task PerformJavascriptInterop2()
+    {
+        Student student = new()
+            {
+                FirstName = "Norben",
+                LastName = "Oriarte"
+            };
+
+        await JSRuntime.InvokeVoidAsync("console.log", "Hello", student);
+    }
+
+    private async Task ShowConfirm()
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
+        result = confirmed ? "You clicked OK" : "You clicked Cancel";
+    }
+
+    private async Task ShowPrompt()
+    {
+        string name = await JSRuntime.InvokeAsync<string>("prompt", "What is your name?");
+        result = "Your name is: " + name;
+    }
+
+    private async Task ShowToastr(string type)
+    {
+        await JSRuntime.InvokeVoidAsync("ShowToastr", type, result);
+    }
+}

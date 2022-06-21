@@ -9,6 +9,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementPortal.Cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementPortal.Shared", "EmployeeManagementPortal\Shared\EmployeeManagementPortal.Shared.csproj", "{260D504A-776C-4A6E-892B-F004875CF5AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorServer", "BlazorServer", "{CA7D28F3-0B45-479A-97F1-31DEDAAB76A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorWasm", "BlazorWasm", "{F96EE963-4118-4687-822C-2C528B5537D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorHosted", "BlazorHosted", "{D83154AF-D422-4547-8558-96538A13AFC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerBlazor.Server", "DockerBlazor.Server\DockerBlazor.Server.csproj", "{AB30C2C6-19E9-47A1-8EA1-2830D5DC17D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerBlazor.Wasm", "DockerBlazor.Wasm\DockerBlazor.Wasm.csproj", "{0E306A0B-4621-4533-A979-3004EC064A94}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FCEC7C2C-C795-4D2F-BE1A-AEE25D774C21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +39,28 @@ Global
 		{260D504A-776C-4A6E-892B-F004875CF5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260D504A-776C-4A6E-892B-F004875CF5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{260D504A-776C-4A6E-892B-F004875CF5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB30C2C6-19E9-47A1-8EA1-2830D5DC17D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB30C2C6-19E9-47A1-8EA1-2830D5DC17D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB30C2C6-19E9-47A1-8EA1-2830D5DC17D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB30C2C6-19E9-47A1-8EA1-2830D5DC17D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E306A0B-4621-4533-A979-3004EC064A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E306A0B-4621-4533-A979-3004EC064A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E306A0B-4621-4533-A979-3004EC064A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E306A0B-4621-4533-A979-3004EC064A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEC7C2C-C795-4D2F-BE1A-AEE25D774C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEC7C2C-C795-4D2F-BE1A-AEE25D774C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEC7C2C-C795-4D2F-BE1A-AEE25D774C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEC7C2C-C795-4D2F-BE1A-AEE25D774C21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E23F793-1856-4B84-A47D-559126BDB9BD} = {D83154AF-D422-4547-8558-96538A13AFC6}
+		{661EDE9B-27F6-402F-BD6D-46974DE04E62} = {D83154AF-D422-4547-8558-96538A13AFC6}
+		{260D504A-776C-4A6E-892B-F004875CF5AD} = {D83154AF-D422-4547-8558-96538A13AFC6}
+		{AB30C2C6-19E9-47A1-8EA1-2830D5DC17D3} = {CA7D28F3-0B45-479A-97F1-31DEDAAB76A7}
+		{0E306A0B-4621-4533-A979-3004EC064A94} = {F96EE963-4118-4687-822C-2C528B5537D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8E0D10A-A24E-4B31-BFF6-7F3F15B58A32}
